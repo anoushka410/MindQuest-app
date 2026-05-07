@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindQuest</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">KQ</div>
+          <div>
+            <p class="eyebrow">General Knowledge</p>
+            <h1>MindQuest</h1>
+          </div>
+        </div>
+
+        <nav class="nav-list">
+          <button class="nav-item active" data-view="paths">Paths</button>
+          <button class="nav-item" data-view="daily">Daily Quiz</button>
+          <button class="nav-item" data-view="review">Review</button>
+        </nav>
+
+        <div class="stats-panel">
+          <div>
+            <span id="xpValue">0</span>
+            <small>XP</small>
+          </div>
+          <div>
+            <span id="streakValue">0</span>
+            <small>day streak</small>
+          </div>
+          <div>
+            <span id="masteryValue">0%</span>
+            <small>mastery</small>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <section class="topbar">
+          <div>
+            <p class="eyebrow" id="viewEyebrow">Choose a path</p>
+            <h2 id="viewTitle">Build a sharper map of the world.</h2>
+          </div>
+          <div class="guide">
+            <div class="guide-face" aria-hidden="true">
+              <span class="eye left"></span>
+              <span class="eye right"></span>
+              <span class="smile"></span>
+            </div>
+            <p id="guideLine">I packed snacks and questionable confidence. Pick a path.</p>
+          </div>
+        </section>
+
+        <section id="pathsView" class="view active">
+          <div class="path-grid" id="pathGrid"></div>
+        </section>
+
+        <section id="dailyView" class="view">
+          <div class="daily-panel">
+            <div>
+              <p class="eyebrow">Mixed practice</p>
+              <h3>Today’s Brain Buffet</h3>
+              <p>
+                Seven questions across history, geography, politics, psychology,
+                philosophy, religion, science, and space.
+              </p>
+            </div>
+            <button class="primary-action" id="startDailyBtn">Start daily quiz</button>
+          </div>
+          <div class="mini-grid" id="dailyPreview"></div>
+        </section>
+
+        <section id="reviewView" class="view">
+          <div class="daily-panel">
+            <div>
+              <p class="eyebrow">Spaced repetition</p>
+              <h3>Review Room</h3>
+              <p id="reviewSummary">Missed questions will collect here for extra practice.</p>
+            </div>
+            <button class="primary-action" id="startReviewBtn">Review misses</button>
+          </div>
+          <div class="review-list" id="reviewList"></div>
+        </section>
+
+        <section id="lessonView" class="lesson-view" aria-live="polite">
+          <div class="lesson-header">
+            <button class="ghost-action" id="exitLessonBtn">Back</button>
+            <div class="progress-track">
+              <div class="progress-fill" id="lessonProgress"></div>
+            </div>
+            <span id="lessonCounter">1 / 5</span>
+          </div>
+
+          <article class="question-card">
+            <p class="eyebrow" id="questionTopic">History</p>
+            <h3 id="questionText"></h3>
+            <div id="questionBody" class="question-body"></div>
+            <div id="answerFeedback" class="answer-feedback"></div>
+            <button class="primary-action hidden" id="nextQuestionBtn">Continue</button>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
