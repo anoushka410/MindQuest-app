@@ -556,7 +556,8 @@ function renderQuestion() {
   document.querySelector("#nextQuestionBtn").classList.add("hidden");
 
   const body = document.querySelector("#questionBody");
-  const options = question.type === "truefalse" ? ["True", "False"] : question.options;
+  // const options = question.type === "truefalse" ? ["True", "False"] : question.options;
+  const options = question.type === "truefalse" ? ["True", "False"] : shuffleOptions(question.options);
   body.innerHTML = options
     .map((option) => `<button class="answer-option" data-answer="${escapeHtml(option)}">${option}</button>`)
     .join("");
@@ -564,6 +565,13 @@ function renderQuestion() {
   document.querySelectorAll(".answer-option").forEach((button) => {
     button.addEventListener("click", () => answerQuestion(button.dataset.answer));
   });
+}
+
+function shuffleOptions(options) {
+  return [...options]
+    .map((option) => ({ option, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ option }) => option);
 }
 
 function answerQuestion(answer) {
